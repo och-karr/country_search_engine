@@ -6,6 +6,10 @@ var $countryInput = $('#country-name');
 var $countries = $('#countries');
 
 $('#search').on('click', searchCountries);
+$('body').on('keypress', function (e) {
+	if (e.keyCode === 13)
+    searchCountries();
+})
 
 function searchCountries(){
 	var countryName = $countryInput.val();
