@@ -33,6 +33,7 @@ function countryCard(resp) {
 			createList(item);
 
 			function createHeader(item) {
+
 				var code = item.alpha3Code.toLowerCase();
 				var $header = $('<div>').addClass('header');
 				var $flag = $('<span>').addClass('flag');
@@ -46,38 +47,31 @@ function countryCard(resp) {
 	
 				if(item.name.length>12) {
 					$name.css("font-size", "14px");
-					$name.css("padding-top", "0");
 				}
 			}
-	
+
 			function createList(item) {
 				var $countryList = $('<div>').addClass('countryList');
-				var $row1 = $('<tr>').addClass('row-1');
-				var $detail1 = $('<td>').addClass('detail').text('Country code:');
-				var $value1 = $('<td>').addClass('value').text(item.alpha2Code);
-				var $row2 = $('<tr>').addClass('row-2');
-				var $detail2 = $('<td>').addClass('detail').text('Capital:');
-				var $value2 = $('<td>').addClass('value').text(item.capital);
-				var $row3 = $('<tr>').addClass('row-2');
-				var $detail3 = $('<td>').addClass('detail').text('Population:');
-				var $value3 = $('<td>').addClass('value').text(item.population);
-				var $row4 = $('<tr>').addClass('row-2');
-				var $detail4 = $('<td>').addClass('detail').text('Currency:');
-				var $value4 = $('<td>').addClass('value').text(item.currencies[0].name);
 			
 				$country.append($countryList);
-				$countryList.append($row1)
-							.append($row2)
-							.append($row3)
-							.append($row4);
-				$row1.append($detail1)
-						.append($value1);
-				$row2.append($detail2)
-						.append($value2);
-				$row3.append($detail3)
-						.append($value3);
-				$row4.append($detail4)
-						.append($value4);
+				$countryList.append('<table>' +
+										'<tr class="row-1">' +
+											'<td class="detail">Country code: </td>' +
+											'<td class="value">'+item.alpha2Code+'</td>' +
+										'</tr>' +
+										'<tr class="row-2">' +
+											'<td class="detail">Capital: </td>' +
+											'<td class="value">'+item.capital+'</td>' +
+										'</tr>' +
+										'<tr class="row-3">' +
+											'<td class="detail">Population: </td>' +
+											'<td class="value">'+item.population+'</td>' +
+										'</tr>' +
+										'<tr class="row-4">' +
+											'<td class="detail">Currency: </td>' +
+											'<td class="value">'+item.currencies[0].name+'</td>' +
+										'</tr>' +
+									'</table>');
 			}
 		});
 	}
